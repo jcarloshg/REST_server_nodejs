@@ -1,30 +1,23 @@
 
 
+const { Router } = require('express');
 
-this.app.get('/api', (req, res) => {
-    res.json({
-        msg: "get api"
-    });
-    // res.send('Hello word')
-});
+const router = Router();
+const {
+    userGet,
+    userPut,
+    userPost,
+    userDelelte,
+    userPatch, } = require('../controllers/user.controller');
 
-this.app.put('/api', (req, res) => {
-    res.json({
-        msg: "put api"
-    });
-    // res.send('Hello word')
-});
+router.get('/', userGet);
 
-this.app.post('/api', (req, res) => {
-    res.json({
-        msg: "post api"
-    });
-    // res.send('Hello word')
-});
+router.put('/:id', userPut);
 
-this.app.delete('/api', (req, res) => {
-    res.json({
-        msg: "delelte api"
-    });
-    // res.send('Hello word')
-});
+router.post('/', userPost);
+
+router.delete('/', userDelelte);
+
+router.patch('/', userPatch);
+
+module.exports = router;
